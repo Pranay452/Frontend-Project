@@ -1,14 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/tailwind.css";
+import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
+import ThemeProvider from "./Components/ThemeProvider";
+import { persistor, store } from "./Redux/Store";
+import "./styles/tailwind.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <ThemeProvider>
+          <>
+            <App />
+            <ToastContainer />
+          </>
+        </ThemeProvider>
+      </Provider>
+    </PersistGate>
   </React.StrictMode>
 );
 

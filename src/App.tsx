@@ -1,18 +1,43 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+// import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
+// import PrivateRoute from "./components/PrivateRoute";
+// import About from "./componen/About";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+// import CreatePost from "./pages/CreatePost";
+// import Dashboard from "./pages/Dashboard";
+// import Home from "./pages/Home";
+// import Projects from "./pages/Projects";
+import SignIn from "./Authentication/Signin";
+import SignUp from "./Authentication/Signup";
+import Profile from "./Components/Profile";
+import Home from "./Components/Home";
+// import UpdatePost from "./pages/UpdatePost";
 
-const App = () => {
+export default function App() {
   return (
-    <div>
-      <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-        <div className="bg-white p-8 rounded shadow-lg">
-          <h1 className="text-2xl font-bold mb-4">Hello, Tailwind CSS!</h1>
-          <p className="text-gray-700">
-            Welcome to your TypeScript + Tailwind CSS React App.
-          </p>
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/projects" element={<Projects />} /> */}
+        {/* <Route element={<PrivateRoute />}> */}
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        {/* </Route> */}
+        {/* <Route element={<OnlyAdminPrivateRoute />}> */}
+        {/* <Route path="/create-post" element={<CreatePost />} /> */}
+        {/* <Route path="/update-post/:postId" element={<UpdatePost />} /> */}
+        {/* </Route> */}
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
-};
-
-export default App;
+}
