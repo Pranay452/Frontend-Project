@@ -1,21 +1,19 @@
 import axios from "axios";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
-import React, { ChangeEventHandler, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-// import {
-//   signInSuccess,
-//   signInFailure,
-//   signInStart,
-// } from "../redux/user/userSlice";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import signin from "../assets/signin.jpg";
+import SigninHeader from "../assets/signInHeader.png";
+import OAuth from "../Components/OAuth";
+import { AuthContext } from "../Provider/AuthProvider";
 import {
   signInFailure,
   signInStart,
   signInSuccess,
   UserType,
 } from "../Redux/User/UserSlice";
-import { setCookie } from "../Utils/Helper";
-import OAuth from "../Components/OAuth";
+import { setCookie, validateEmail } from "../Utils/Helper";
 
 interface FormData {
   email?: string;
@@ -33,12 +31,24 @@ interface InputSubmitEvent {
 const SignIn = () => {
   const [formData, setFormData] = useState<FormData>({});
 
+  const { setAuthToken } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { loading, error } = useSelector((state: UserType) => state.user);
 
   const { email, password } = formData;
+
+  const clearErrorState = () => {
+    dispatch(signInFailure(null));
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", clearErrorState);
+
+    return () => window.removeEventListener("beforeunload", clearErrorState);
+  }, []);
 
   const handleChange = (e: InputChangEvent) => {
     error !== "" && dispatch(signInFailure(""));
@@ -56,6 +66,12 @@ const SignIn = () => {
       return;
     }
 
+    const emailValidation = validateEmail(email);
+    if (!emailValidation) {
+      dispatch(signInFailure("Please enter a valid email"));
+      return;
+    }
+
     try {
       dispatch(signInStart());
       axios
@@ -63,7 +79,10 @@ const SignIn = () => {
         .then((res) => {
           const { status, user, accessToken } = res?.data || {};
           if (status === "SUCCESS") {
+            // console.log("hello");
+            localStorage.setItem("email", res?.data?.user?.email);
             setCookie("accessToken", accessToken, 1);
+            setAuthToken(accessToken);
             dispatch(
               signInSuccess({
                 ...user,
@@ -87,66 +106,81 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen border border-gray-50">
-      <div className="mt-44">
-        <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
-          {/* left */}
-          <div className="flex-1">
-            <Link to="/" className="text-4xl font-bold dark:text-white">
-              <span className="px-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg ">
-                Pramodhini
-              </span>
-              <br />
-              <p className="flex justify-center mt-4">Arts</p>
-            </Link>
-            {/* <p className="text-sm mt-5">
-              You can sign in with your email and password or with Google.
-            </p> */}
+    <div className="min-h-screen flex items-center justify-center  opacity-75 p-4">
+      <div className="w-full max-w-4xl bg-gray-600 shadow-lg rounded-lg overflow-hidden">
+        <div className="flex flex-col md:flex-row">
+          {/* Left - Image Section */}
+          <div className="md:w-1/2 relative hidden md:block">
+            <img
+              src={signin}
+              alt="Sign In"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black opacity-40"></div>
           </div>
-          {/* right */}
-          <div className="flex-1">
+
+          {/* Right - Form Section */}
+          <div className="w-full md:w-1/2 p-8">
+            <img src={SigninHeader} alt="" />
+
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-              <div className="flex flex-col gap-y-4">
+              <div className="flex flex-col gap-y-4 mt-6">
                 <div>
-                  <Label value="Your email" />
+                  <Label value="Email" />
                   <TextInput
                     type="email"
                     placeholder="name@company.com"
                     id="email"
                     onChange={handleChange}
+                    className="border-gray-300 rounded-md shadow-sm"
                   />
                 </div>
                 <div>
-                  <Label value="Your password" />
+                  <Label value="Password" />
                   <TextInput
                     type="password"
                     placeholder="************"
                     id="password"
                     onChange={handleChange}
+                    className="border-gray-300 rounded-md shadow-sm"
                   />
                 </div>
               </div>
+              <div className="flex items-center justify-end mb-4">
+                <p
+                  className="underline text-blue-400 hover:text-blue-300 transition duration-300 ease-in-out cursor-pointer"
+                  onClick={() => {
+                    navigate("/forgot-password");
+                  }}
+                >
+                  Forgot Password?
+                </p>
+              </div>
 
               <Button
-                gradientDuoTone="purpleToPink"
                 type="submit"
                 disabled={loading}
-                className="mt-2"
+                className="bg-gradient-to-r from-gray-600 to-gray-300 hover:from-gray-700 hover:to-gray-400 text-white font-bold  px-6 md:py-2 md:px-6 rounded-full animate__animated animate__zoomIn"
               >
                 {loading ? (
                   <>
-                    <Spinner size="sm" />
+                    <Spinner size="sm" light={true} />
                     <span className="pl-3">Loading...</span>
                   </>
                 ) : (
                   "Sign In"
                 )}
               </Button>
+
               <OAuth />
             </form>
-            <div className="flex gap-2 text-sm mt-5">
+
+            <div className="flex gap-2 text-sm mt-5 justify-center md:justify-start">
               <span>Don't Have an account?</span>
-              <Link to="/signup" className="text-blue-500">
+              <Link
+                to="/signup"
+                className="text-blue-400 hover:text-blue-300 transition duration-300 ease-in-out cursor-pointer"
+              >
                 Sign Up
               </Link>
             </div>

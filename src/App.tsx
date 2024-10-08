@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
+import ForgotPassword from "./Authentication/ForgotPassword";
 // import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
 // import PrivateRoute from "./components/PrivateRoute";
 // import About from "./componen/About";
@@ -15,7 +16,11 @@ import SignIn from "./Authentication/Signin";
 import SignUp from "./Authentication/Signup";
 import Profile from "./Components/Profile";
 import Home from "./Components/Home";
+import ImageUpload from "./Components/ImageUpload";
+import Myorders from "./Components/Myorders";
+import Gallery from "./Components/Gallery";
 // import UpdatePost from "./pages/UpdatePost";
+import Allorders from "./Components/AllOrders";
 
 export default function App() {
   return (
@@ -28,14 +33,11 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/projects" element={<Projects />} /> */}
-        {/* <Route element={<PrivateRoute />}> */}
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-        {/* </Route> */}
-        {/* <Route element={<OnlyAdminPrivateRoute />}> */}
-        {/* <Route path="/create-post" element={<CreatePost />} /> */}
-        {/* <Route path="/update-post/:postId" element={<UpdatePost />} /> */}
-        {/* </Route> */}
+        <Route path="/upload" element={<ImageUpload />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/myorders" element={<Myorders />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/allorders" element={<Allorders />} />
       </Routes>
       <Footer />
     </BrowserRouter>
