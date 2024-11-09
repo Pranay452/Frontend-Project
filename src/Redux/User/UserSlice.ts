@@ -9,6 +9,7 @@ export type UserType = {
       contact_number: number;
       _id: string;
       accessToken: string;
+      isAdmin: string;
     };
     error: string;
     loading: boolean;

@@ -8,6 +8,7 @@ import App from "./App";
 import ThemeProvider from "./Components/ThemeProvider";
 import { persistor, store } from "./Redux/Store";
 import "./styles/tailwind.css";
+import AuthProvider from "./Provider/AuthProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,12 +17,14 @@ root.render(
   <React.StrictMode>
     <PersistGate persistor={persistor}>
       <Provider store={store}>
-        <ThemeProvider>
-          <>
-            <App />
-            <ToastContainer />
-          </>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <>
+              <App />
+              <ToastContainer />
+            </>
+          </ThemeProvider>
+        </AuthProvider>
       </Provider>
     </PersistGate>
   </React.StrictMode>
