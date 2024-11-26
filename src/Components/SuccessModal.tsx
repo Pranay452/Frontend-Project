@@ -31,7 +31,8 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative bg-white rounded-lg shadow-lg p-8 text-center animate__animated animate__bounceIn">
         <img
-          src={GIF}
+          // src={GIF}
+          src="https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/bf6.gif"
           alt="Success"
           className="w-24 h-24 mx-auto mb-4 animate__animated animate__tada"
         />

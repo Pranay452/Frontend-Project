@@ -112,7 +112,11 @@ const SignIn = () => {
           {/* Left - Image Section */}
           <div className="md:w-1/2 relative hidden md:block">
             <img
-              src={signin}
+              // src={signin}
+              // src={
+              //   "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/signin.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIASFUIRRI52U3IIU5J%2F20241109%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T084108Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmFwLXNvdXRoLTEiRjBEAiAUPlFJ1vF2sJQR4ZmJg0I4eAuKPoBW2mgSU99dcYi5dQIgX9vP22Wv51EEJwH9wi%2FEusrSAWXuduRG1OA%2BeV0f20Uq7AIIchAAGgwxNDk1MzY0NzU3MDciDIszGNBU4PEVVSPBCSrJAkGYWkIjCwQYXpjdfuabFABUSRd6xxMNvqpvjcbQDOaGnyIIqI4v2rpC6ERrHmHwul2LQp7Nn7vq5sdWMcgjRFtwwJVZeaimB4eSHu2cQW7g%2Bw4Nqdzp1zmxE5rj7eKuy%2F8ASLcdE3iScyb8fzqD8QbJXZ2MBcSroZoo2IiDGqkIRQuMC4paqzdGg1hawtSDtMsgFJxrYNfi7Wmh4kZRkWoWmjCHwDMitCktTDx81HjC24uNuXPYUBomzTAdDKO4%2B0GSmeXt2nMj%2BK6YI4rz4Xdvze%2Fgu%2Bzn%2FB%2B9ocX5egVH45fEmYM5MksBtUjsB69ISnHGHgky4%2FuXWcGgiLdo7CjPGlLTmcIdcNsV9hDbbGHDOhiRIcxlP077mhwRdO8DncsSmST81AYGG5Rn2UBjoLsMIkiq%2FAj9Gf5HrAZ31dxS%2BHojU01cGsjiMMqnvLkGOrQCyEPDl%2FtLv6PRUZNSmzPbpC8pmG6GSjy6VPnUQa7e0puls2YNdJsm6etlo%2B%2FoY41jsAFSh5tjmqA0V7XcTz7fR2xs6YCjhC0jwVpHJ0SbzqGqTBwaGVxWFqBuhMSfnT9CvxHIeUpUMel1SHox%2FUnaOwsP6CugsvoiOohnOZBGs0FgGTBQ%2B52%2FzbqDrGH7jmpxchNpsyBfbwWcZoZpE2m1F5LJPeAvgDUnbvLrPKJ5xDbyMpI8ARZtEqAI1FH97NDKt7YoiPiqL%2BUFP2c65nHTZBY1CAr6HE2yp9K407y1WkUYCq6v69oGQmHi3Smd0w2PH%2F2vSiVmtrp7Z2orCphFr5yujnTSfBbYI3cZVdJzzOwo65hj8A1C0xkmL6NL8hqvrl%2BYJVbAs32FK2w7BAAK92fCrsw%3D&X-Amz-Signature=467e53fc6baf0a47df46f3be85d134b9d93209cb00c8a8d00d81bf9424268100&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+              // }
+              src="https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/signin.jpg"
               alt="Sign In"
               className="w-full h-full object-cover"
             />
@@ -121,7 +125,11 @@ const SignIn = () => {
 
           {/* Right - Form Section */}
           <div className="w-full md:w-1/2 p-8">
-            <img src={SigninHeader} alt="" />
+            {/* <img src={SigninHeader} alt="" /> */}
+            <img
+              src="https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/signInHeader.png"
+              alt=""
+            />
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="flex flex-col gap-y-4 mt-6">

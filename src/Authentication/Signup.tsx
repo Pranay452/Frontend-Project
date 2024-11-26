@@ -147,7 +147,8 @@ const SignUp = () => {
           {/* Left - Image Section */}
           <div className="md:w-1/2 relative hidden md:block">
             <img
-              src={Signup}
+              // src={Signup}
+              src="https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/signup.jpg"
               alt="Sign Up"
               className="w-full h-full object-cover"
             />
@@ -166,7 +167,11 @@ const SignUp = () => {
               <br />
               <p className="mt-4 text-gray-400">Arts</p>
             </Link> */}
-            <img src={SigninHeader} alt="" className="mb-6" />
+            {/* <img src={SigninHeader} alt="" className="mb-6" /> */}
+            <img
+              src="https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/signInHeader.png"
+              alt="mb-6"
+            />
 
             {!isOtpSent ? (
               <form className="flex flex-col gap-4" onSubmit={handleSubmit}>

@@ -16,22 +16,40 @@ import img14 from "../assets/img_14.jpg";
 import img15 from "../assets/img_15.jpg";
 
 const Gallery = () => {
+  // const images = [
+  //   img1,
+  //   img2,
+  //   img3,
+  //   img4,
+  //   img5,
+  //   img6,
+  //   img7,
+  //   img8,
+  //   img9,
+  //   img10,
+  //   img11,
+  //   img12,
+  //   img13,
+  //   img14,
+  //   img15,
+  // ];
+
   const images = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-    img10,
-    img11,
-    img12,
-    img13,
-    img14,
-    img15,
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_1.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_2.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_3.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_4.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_5.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_6.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_7.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_8.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_9.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_10.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_11.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_12.png",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_13.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_14.jpg",
+    "https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/img_15.jpg",
   ];
 
   return (

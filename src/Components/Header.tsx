@@ -42,7 +42,12 @@ const Header: React.FC = () => {
     >
       {/* Left side: Logo */}
       <Link to="/" className="flex items-center">
-        <img src={NewLogo} alt="" className="h-14 w-20" />
+        {/* <img src={NewLogo} alt="" className="h-14 w-20" /> */}
+        <img
+          src="https://pranaymanepallybucket.s3.ap-south-1.amazonaws.com/assets/lastOne.jpg"
+          alt=""
+          className="h-14 w-20"
+        />
         {/* <span
           className="text-3xl font-bold bg-clip-text text-transparent"
           style={{
